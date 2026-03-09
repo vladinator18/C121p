@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { PrismaClient } from '../generated/prisma.js';
+import { PrismaClient } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
