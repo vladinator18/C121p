@@ -1,97 +1,274 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width",
-  initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Art Gallery</title>
-  <link rel="stylesheet" href="/Gallery/Css/Style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .brand-logo {
+      width: 150px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      color: #333;
+    }
+
+    nav {
+      margin-bottom: 30px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+    }
+
+    .category {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .category:hover {
+      background-color: #ddd;
+    }
+
+    .galleries {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .gallery {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .gallery__images-thumbnail {
+      margin-bottom: 15px;
+    }
+
+    .gallery__images-thumbnail p {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .gallery__images-thumbnail img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .gallery__images-more {
+      margin: 15px 0;
+    }
+
+    .gallery__images-more div {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .gallery__images-more img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .gallery__info {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .gallery__info p {
+      color: #666;
+      font-style: italic;
+    }
+
+    .like-section {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .like-btn {
+      background: none;
+      border: 2px solid #e74c3c;
+      color: #e74c3c;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s;
+    }
+
+    .like-btn:hover {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .like-count {
+      font-weight: bold;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
   <main>
     <!-- logo -->
     <img src="./img/art1.jpg" alt="Brand Logo" class="brand-logo">
-    <h2>Art Gallery </h2>
-      <nav>
+    <h2>Art Gallery</h2>
+    <nav>
       <ul class="categories">
-        <li><a href="index.html"class="category">Home</a></li>
-        <li><a href="author.html"class="category">Author</a></li>
-        <li><a href="contact"class="category">Contact</a></li>
+        <li><a href="index.html" class="category">Home</a></li>
+        <li><a href="author.html" class="category">Author</a></li>
+        <li><a href="contact.html" class="category">Contact</a></li>
       </ul>
     </nav>
-      <section class="galleries">
-        <article class="gallery">
-          <div class="gallery__images">
-            <div class="gallery__images-thumbnail">
-              <div>
-                <p>Pablo Picasso</p>
-                <img src="./img/art1.jpg" alt="Art 1">
-              </div>
-            </div>
-          </div>
-          <div class="gallery__images-more">
+    <section class="galleries">
+      <article class="gallery">
+        <div class="gallery__images">
+          <div class="gallery__images-thumbnail">
             <div>
-              <img src="./img/art2.jpg" alt="Art 2">
-              <img src="./img/art3.jpg" alt="Art 3">
-              <img src="./img/art4.jpg" alt="Art 4">
+              <p>Pablo Picasso</p>
+              <img src="./img/art1.jpg" alt="Art 1">
             </div>
           </div>
-          <div class="gallery__info">
-            <p>Cubism</p>
+        </div>
+        <div class="gallery__images-more">
+          <div>
+            <img src="./img/art2.jpg" alt="Art 2">
+            <img src="./img/art3.jpg" alt="Art 3">
+            <img src="./img/art4.jpg" alt="Art 4">
           </div>
-        </article>
-        <article class="gallery">
-          <div class="gallery__images">
-            <div class="gallery__images-thumbnail">
-              <div>
-                <p>Vincent Van-Gogh</p>
-                <img src="./img/stock1.jpg" alt="Stock 1">
-              </div>
-            </div>
+        </div>
+        <div class="gallery__info">
+          <p>Cubism</p>
+          <div class="like-section">
+            <button class="like-btn" onclick="sendLike(1)">❤ Like</button>
+            <span class="like-count" id="like-count-1">0</span>
           </div>
-          <div class="gallery__images-more">
+        </div>
+      </article>
+
+      <article class="gallery">
+        <div class="gallery__images">
+          <div class="gallery__images-thumbnail">
             <div>
-              <img src="./img/stock2.jpg" alt="Stock 2">
-              <img src="./img/stock3.jpg" alt="Stock 3">
-              <img src="./img/stock4.jpg" alt="Stock 4">
+              <p>Vincent Van-Gogh</p>
+              <img src="./img/stock1.jpg" alt="Stock 1">
             </div>
           </div>
-          <div class="gallery__info">
-            <p>Post-Impressionism</p>
+        </div>
+        <div class="gallery__images-more">
+          <div>
+            <img src="./img/stock2.jpg" alt="Stock 2">
+            <img src="./img/stock3.jpg" alt="Stock 3">
+            <img src="./img/stock4.jpg" alt="Stock 4">
           </div>
-        </article>
-        <article class="gallery">
-          <div class="gallery__images">
-            <div class="gallery__images-thumbnail">
-              <div>
-                <p>Fernando Amorsolo</p>
-                <img src="./img/ex1.jpg" alt="Example 1">
-              </div>
-            </div>
+        </div>
+        <div class="gallery__info">
+          <p>Post-Impressionism</p>
+          <div class="like-section">
+            <button class="like-btn" onclick="sendLike(2)">❤ Like</button>
+            <span class="like-count" id="like-count-2">0</span>
           </div>
-          <div class="gallery__images-more">
+        </div>
+      </article>
+
+      <article class="gallery">
+        <div class="gallery__images">
+          <div class="gallery__images-thumbnail">
             <div>
-              <img src="./img/ex2.jpeg" alt="Ex 2">
-              <img src="./img/ex3.jpg" alt="Ex 3">
-              <img src="./img/ex4.jpg" alt="Ex 4">
+              <p>Fernando Amorsolo</p>
+              <img src="./img/ex1.jpg" alt="Example 1">
             </div>
           </div>
-          <div class="gallery__info">
-            <!-- lowk idk what to put for dis guy -->
-            <p>Realism</p>
+        </div>
+        <div class="gallery__images-more">
+          <div>
+            <img src="./img/ex2.jpeg" alt="Ex 2">
+            <img src="./img/ex3.jpg" alt="Ex 3">
+            <img src="./img/ex4.jpg" alt="Ex 4">
           </div>
-        </article>
-      </section>
+        </div>
+        <div class="gallery__info">
+          <p>Realism</p>
+          <div class="like-section">
+            <button class="like-btn" onclick="sendLike(3)">❤ Like</button>
+            <span class="like-count" id="like-count-3">0</span>
+          </div>
+        </div>
+      </article>
+    </section>
   </main>
+  
   <footer>
     <p>CodeDestroyers | ITS-121L AM11</p>
   </footer>
-CSS:
-*{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  box-sizing: border-box;
 
-}
+  <script>
+    async function sendLike(id) {
+      const response = await fetch('/api/like', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ artworkId: id })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById(`like-count-${id}`).innerText = data.likes;
+      } else {
+        // Fallback for demo purposes when API is not available
+        const countElement = document.getElementById(`like-count-${id}`);
+        countElement.innerText = parseInt(countElement.innerText) + 1;
+      }
+    }
+  </script>
+</body>
+</html>
