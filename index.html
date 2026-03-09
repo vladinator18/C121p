@@ -4,47 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C121p | The Digital Gallery</title>
-    <link rel="stylesheet" href="/Website/Home (root)/Css/Index.css">
+    <link rel="stylesheet" href="Website/Home (root)/Css/Index.css">
 </head>
-<body>
+<body class="fade-in">
     <header>
         <nav class="navbar">
-            <div class="logo">C121p GALLERY</div>
+            <div class="logo-container">
+                <svg class="nav-logo-svg" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="99" cy="97" r="55" fill="#000" fill-opacity="0.05"/>
+                    <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
+                    <path d="M83 143.5L73 142L91.7 75.5L115.9 77L128.9 142L119.9 143.5L113 126.9L86.4 129.1L83 143.5ZM110.8 121.6L96.9 88.1H96.1L88.2 121.4L110.8 121.6Z" fill="#1a1a1a"/>
+                </svg>
+                <span class="logo-text">C121p</span>
+            </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="Website/Gallery/Gallery.html">Exhibitions</a></li>
-                <li><a href="Website/Contact/Contact.html">Inquiries</a></li>
-                <li><a href="Website/Contact/Contact.html">Peoples</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="Website/Gallery/Gallery.html">Exhibitions</a></li>
+            <li><a href="Website/Author/author.html">Artists</a></li>
+            <li><a href="Website/Contact/Contact.html">Inquiries</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero slide-up">
             <div class="hero-content">
-                <h1>Where History Meets Modernity</h1>
-                <p>Explore curated collections from Picasso, Van-Gogh, and more.</p>
-                <a href="Gallery.html" class="cta-button">Enter Gallery</a>
+                <span class="subtitle">EST. 2026</span>
+                <h1>Library of Alexander: A Collection of Timeless Artwork</h1>
+                <p>To provide artists and art enthusiasts the chance to see beautiful artworks in a click of a button.</p>
+                <a href="#" class="cta-button">Enter Gallery</a>
             </div>
         </section>
 
-        <section class="featured">
-            <h2>Current Exhibitions</h2>
+        <section class="featured slide-up-delayed">
+            <div class="section-header">
+                <h2>Current Exhibitions</h2>
+                <div class="line"></div>
+            </div>
             <div class="artist-grid">
                 <div class="artist-card">
+                    <div class="card-img picasso"></div>
                     <h3>Pablo Picasso</h3>
                     <p>The Master of Cubism</p>
                 </div>
                 <div class="artist-card">
+                    <div class="card-img vangogh"></div>
                     <h3>Vincent Van-Gogh</h3>
                     <p>Post-Impressionist Dreams</p>
+                
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>CodeDestroyers | ITS-121L AM11 | 2026</p>
+        <p>CodeDestroyers | 2026 | ITS121p</p>
     </footer>
 </body>
 </html>

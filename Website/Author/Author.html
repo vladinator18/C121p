@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists | C121p Gallery</title>
+    <link rel="stylesheet" href="stylesheet/style.css">
+</head>
+<body class="fade-in">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <svg class="nav-logo-svg" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
+                <path d="M83 143.5L73 142L91.7 75.5L115.9 77L128.9 142L119.9 143.5L113 126.9L86.4 129.1L83 143.5ZM110.8 121.6L96.9 88.1H96.1L88.2 121.4L110.8 121.6Z" fill="black"/>
+            </svg>
+            <span class="logo-text">C121p</span>
+        </div>
+     <ul class="nav-links">
+    <li><a href="../../index.html">Home</a></li>
+    
+    <li><a href="../Gallery/Gallery.html">Exhibitions</a></li>
+    
+    <li><a href="author.html" class="active">Artists</a></li>
+    
+    <li><a href="../Contact/Contact.html">Inquiries</a></li>
+</ul>
+    </nav>
+
+    <main class="artist-main">
+        <header class="directory-header slide-up">
+            <span class="label">Archive</span>
+            <h1>Artist Directory</h1>
+            <p>Select a master to view their profile and historical influence.</p>
+        </header>
+
+        <section class="artist-selector slide-up-delayed">
+            <div class="artist-avatar" onclick="showArtist('picasso')">
+                <img src="Photos\amorsolo.jpg" alt="Picasso">
+                <span>Picasso</span>
+            </div>
+            <div class="artist-avatar" onclick="showArtist('amorsolo')">
+                <img src="Photos\picasso.jpg" alt="Amorsolo">
+                <span>Amorsolo</span>
+            </div>
+            <div class="artist-avatar" onclick="showArtist('vangogh')">
+                <img src="Photos\vangogh.jpg" alt="Van Gogh">
+                <span>Van Gogh</span>
+            </div>
+        </section>
+
+        <section id="artist-display" class="slide-up-delayed">
+            <div id="info-content" class="info-card">
+                <div class="placeholder-text">
+                    <div class="line"></div>
+                    <p>Select an artist above to reveal their legacy.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>CODEDESTROYERS | AM11 | 2026</p>
+    </footer>
+
+    <script>
+        function showArtist(name) {
+            const content = document.getElementById("info-content");
+            content.style.opacity = "0";
+            content.style.transform = "translateY(10px)";
+
+            const artists = {
+                picasso: {
+                    title: "Pablo Picasso",
+                    dates: "1881 — 1973",
+                    style: "Cubism",
+                    bio: "A Spanish titan who redefined 20th-century art. Co-founder of Cubism and pioneer of constructed sculpture, his work spans from the somber Blue Period to the chaotic intensity of Guernica."
+                },
+                amorsolo: {
+                    title: "Fernando Amorsolo",
+                    dates: "1892 — 1972",
+                    style: "Realism / Impressionism",
+                    bio: "The 'Grand Old Man of Philippine Art.' Celebrated for his mastery of light and his vibrant, romanticized depictions of rural Philippine life and sun-drenched landscapes."
+                },
+                vangogh: {
+                    title: "Vincent van Gogh",
+                    dates: "1853 — 1890",
+                    style: "Post-Impressionism",
+                    bio: "A Dutch visionary whose expressive brushwork and bold color palettes became the foundation of modern art. His legacy includes over 2,100 artworks characterized by raw emotion."
+                }
+            };
+
+            setTimeout(() => {
+                const data = artists[name];
+                content.innerHTML = `
+                    <div class="details-wrap">
+                        <span class="style-tag">${data.style}</span>
+                        <h2>${data.title}</h2>
+                        <p class="dates">${data.dates}</p>
+                        <div class="divider"></div>
+                        <p class="bio">${data.bio}</p>
+                    </div>
+                `;
+                content.style.opacity = "1";
+                content.style.transform = "translateY(0)";
+            }, 300);
+        }
+    </script>
+</body>
+</html>
