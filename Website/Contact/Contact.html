@@ -1,0 +1,92 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Account Registration Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="contacts-form.css">
+</head>
+
+<body>
+	
+	<aside>
+		<div class="gallery">
+			<caption id="gallLoc">Gallery Location</caption>
+			<h4>Roxas Avenue, University of the Philippines Diliman, Quezon City.</h4>
+		</div>
+
+		<div class="opening">
+			<caption id="openingHours">Opening Hours</caption>
+			<br><br>
+			  <table>
+			    <thead>
+			      <tr>
+			        <th>Day</th>
+			        <th>Hours</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>Monday</td>
+			        <td>Closed for Installation</td>
+			      </tr>
+			      <tr>
+			        <td>Tuesday – Friday</td>
+			        <td>10:00 AM – 6:00 PM</td>
+			      </tr>
+			      <tr>
+			        <td>Saturday</td>
+			        <td>11:00 AM – 7:00 PM</td>
+			      </tr>
+			      <tr>
+			        <td>Sunday</td>
+			        <td>11:00 AM – 4:00 PM</td>
+			      </tr>
+			    </tbody>
+			  </table>
+			  <p><em>Last entry is 30 minutes before closing.</em></p>
+		</div>
+	</aside>
+
+	<article id="contForm">
+		<br><br>
+		<caption id="contactF">CONTACT US HERE</caption>
+		<br><br>
+		<form id="contactForm"> 
+			<label for="name">Enter your name</label>
+			<input type="text" id="name" name="naME" class="name" required> 
+
+			<br><br>
+
+			<label for="phoneNo">Enter your phone number</label>
+			<input type="tel" id="phoneNo" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+			<br><br>
+
+			<label for="email">Enter your gmail</label>
+			<input type="email" id="email" name="email">
+
+			<br><br>
+
+			<label for="comments">Write your comments here:</label>
+			<input type="text" id="comments" name="comments" class="com">
+
+			<br><br>
+
+			<input class="submitBut" type="submit" value="Submit"> 
+			<br><br>
+		</form>
+	</article>
+</body>
+
+<footer class="fooTer">
+	<caption>Social Media Links</caption>
+    <div class="footer-content">
+        <p> AM11 - Codedestroyers </p>
+        <p>Follow us on 
+            <a href="#">Facebook</a>  
+            <a href="#">Instagram</a>  
+            <a href="#">Twitter</a>
+        </p>
+    </div>
+</footer>
