@@ -193,9 +193,13 @@ body {
     filter: grayscale(0%);
 }
 
-.picasso { background: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=800') center/cover; }
-.vangogh { background: url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=800') center/cover; }
+.picasso { 
+    background: url('IMG/figures-at-the-seaside.jpg') center/cover no-repeat; 
+}
 
+.vangogh { 
+    background: url('IMG/Starry night.jpg') center/cover no-repeat; 
+}
 footer {
     padding: 60px;
     text-align: center;
