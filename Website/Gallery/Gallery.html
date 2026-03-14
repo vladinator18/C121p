@@ -6,20 +6,28 @@
     <title>C121p | Immersive Gallery</title>
     <link rel="stylesheet" href="Css/Style.css">
 </head>
-<body>
+<body class="gallery-page">
 
-    <div id="sidebar-overlay"></div>
-
-    <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    <div id="nav-overlay"></div>
 
     <svg class="brand-logo-fixed" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
         <path d="M83 143.5L73 142L91.7 75.5L115.9 77L128.9 142L119.9 143.5L113 126.9L86.4 129.1L83 143.5ZM110.8 121.6L96.9 88.1H96.1L88.2 121.4L110.8 121.6Z" fill="black"/>
     </svg>
+
+    <div class="nav-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="main-sidebar" id="main-sidebar">
+        <div class="sidebar-header">MENU</div>
+        <a href="index.html">Home</a>
+        <a href="Website/Gallery/Gallery.html" class="active">Exhibitions</a>
+        <a href="Website/Author/author.html">Artists</a>
+        <a href="Website/Contact/Contact.html">Inquiries</a>
+    </nav>
 
     <div id="lightbox">
         <img src="" alt="Zoomed View">
@@ -28,14 +36,12 @@
     <main>
         <header>
             <h2>ART ARCHIVE</h2>
-            <nav>
-                <div class="categories" id="categories-menu">
-                    <button class="filter-btn active" onclick="filterGallery('all')">All</button>
-                    <button class="filter-btn" onclick="filterGallery('cubism')">Cubism</button>
-                    <button class="filter-btn" onclick="filterGallery('impressionism')">Impressionism</button>
-                    <button class="filter-btn" onclick="filterGallery('realism')">Realism</button>
-                </div>
-            </nav>
+            <div class="categories">
+                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+                <button class="filter-btn" onclick="filterGallery('cubism')">Cubism</button>
+                <button class="filter-btn" onclick="filterGallery('impressionism')">Impressionism</button>
+                <button class="filter-btn" onclick="filterGallery('realism')">Realism</button>
+            </div>
         </header>
 
         <section class="galleries" id="galleryGrid">
@@ -53,7 +59,7 @@
                     <span class="style-tag">Cubism</span>
                 </div>
             </article>
-            </section>
+        </section>
     </main>
 
     <footer>
@@ -61,22 +67,20 @@
     </footer>
 
     <script>
-        // --- SIDEBAR TOGGLE LOGIC ---
-        const menuToggle = document.getElementById('menu-toggle');
-        const categoriesMenu = document.getElementById('categories-menu');
-        const overlay = document.getElementById('sidebar-overlay');
+        // --- SIDEBAR LOGIC ---
+        const navToggle = document.getElementById('nav-toggle');
+        const mainSidebar = document.getElementById('main-sidebar');
+        const overlay = document.getElementById('nav-overlay');
 
-        function toggleSidebar() {
-            menuToggle.classList.toggle('active');
-            categoriesMenu.classList.toggle('active');
+        function toggleMenu() {
+            navToggle.classList.toggle('active');
+            mainSidebar.classList.toggle('active');
             overlay.classList.toggle('active');
-            
-            // Lock background scroll when open
-            document.body.style.overflow = categoriesMenu.classList.contains('active') ? 'hidden' : 'auto';
+            document.body.style.overflow = mainSidebar.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        menuToggle.addEventListener('click', toggleSidebar);
-        overlay.addEventListener('click', toggleSidebar);
+        navToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
 
         // --- FILTER LOGIC ---
         function filterGallery(category) {
@@ -89,27 +93,16 @@
 
             const items = document.querySelectorAll('.gallery');
             items.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(10px)';
-
-                setTimeout(() => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.classList.remove('hidden');
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                }, 300);
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hidden');
+                    item.style.opacity = '1';
+                } else {
+                    item.classList.add('hidden');
+                }
             });
-
-            // Auto-close sidebar on mobile after picking a category
-            if (window.innerWidth <= 768 && categoriesMenu.classList.contains('active')) {
-                toggleSidebar();
-            }
         }
 
-        // --- ZOOM LOGIC ---
+        // --- LIGHTBOX ZOOM ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = lightbox.querySelector('img');
 
@@ -123,10 +116,7 @@
 
         lightbox.addEventListener('click', () => {
             lightbox.classList.remove('active');
-            // Only resume scroll if sidebar isn't also open
-            if (!categoriesMenu.classList.contains('active')) {
-                document.body.style.overflow = 'auto';
-            }
+            if (!mainSidebar.classList.contains('active')) document.body.style.overflow = 'auto';
         });
     </script>
 </body>
