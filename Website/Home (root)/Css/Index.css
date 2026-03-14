@@ -210,7 +210,37 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .navbar { padding: 0 5%; }
-    .nav-links { display: none; }
-    .hero h1 { font-size: 3rem; }
+    .navbar { 
+        padding: 0 5%; 
+        height: 70px; /* Slightly smaller for mobile */
+    }
+
+    /* Stack links vertically and hide off-screen */
+    .nav-links { 
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: -100%; /* Hidden off-screen */
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        gap: 30px;
+        padding: 50px;
+        transition: var(--transition);
+        z-index: 99;
+    }
+
+    /* Class to show the menu */
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hero h1 { 
+        font-size: 2.5rem; 
+    }
+
+    .artist-grid {
+        grid-template-columns: 1fr; /* Single column for small screens */
+    }
 }
