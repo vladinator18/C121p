@@ -5,9 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C121p | The Digital Gallery</title>
     <link rel="stylesheet" href="Website/Home (root)/Css/Index.css">
+    <style>
+        /* Small CSS addition for the hamburger icon if not in your CSS file yet */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001; /* Above the sidebar */
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1a1a1a;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
+            /* Rotate to 'X' when active */
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 998;
+        }
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 </head>
 <body class="fade-in">
-    <header>
+    <div class="overlay" id="overlay"></div> <header>
         <nav class="navbar">
             <div class="logo-container">
                 <svg class="nav-logo-svg" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,11 +59,18 @@
                 </svg>
                 <span class="logo-text">C121p</span>
             </div>
-            <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="Website/Gallery/Gallery.html">Exhibitions</a></li>
-            <li><a href="Website/Author/author.html">Artists</a></li>
-            <li><a href="Website/Contact/Contact.html">Inquiries</a></li>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="Website/Gallery/Gallery.html">Exhibitions</a></li>
+                <li><a href="Website/Author/author.html">Artists</a></li>
+                <li><a href="Website/Contact/Contact.html">Inquiries</a></li>
             </ul>
         </nav>
     </header>
@@ -51,7 +100,6 @@
                     <div class="card-img vangogh"></div>
                     <h3>Vincent Van-Gogh</h3>
                     <p>Post-Impressionist Dreams</p>
-                
                 </div>
             </div>
         </section>
@@ -60,5 +108,35 @@
     <footer>
         <p>CodeDestroyers | 2026 | ITS121p</p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Prevent scrolling on the main page when sidebar is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) toggleMenu();
+            });
+        });
+    </script>
 </body>
 </html>
