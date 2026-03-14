@@ -5,84 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C121p | Immersive Gallery</title>
     <link rel="stylesheet" href="Website/Home(root)/Css/Index.css"> 
+    <title>C121p | The Digital Gallery</title>
+    <link rel="stylesheet" href="Website/Home (root)/Css/Index.css">
+    <style>
+        /* Small CSS addition for the hamburger icon if not in your CSS file yet */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001; /* Above the sidebar */
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1a1a1a;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
+            /* Rotate to 'X' when active */
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 998;
+        }
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 </head>
-<body class="gallery-page">
+<body class="fade-in">
+    <div class="overlay" id="overlay"></div> <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <svg class="nav-logo-svg" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="99" cy="97" r="55" fill="#000" fill-opacity="0.05"/>
+                    <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
+                    <path d="M83 143.5L73 142L91.7 75.5L115.9 77L128.9 142L119.9 143.5L113 126.9L86.4 129.1L83 143.5ZM110.8 121.6L96.9 88.1H96.1L88.2 121.4L110.8 121.6Z" fill="#1a1a1a"/>
+                </svg>
+                <span class="logo-text">C121p</span>
+            </div>
 
-    <div id="nav-overlay"></div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-    <svg class="brand-logo-fixed" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
-        <path d="M83 143.5L73 142L91.7 75.5L115.9 77L128.9 142L119.9 143.5L113 126.9L86.4 129.1L83 143.5ZM110.8 121.6L96.9 88.1H96.1L88.2 121.4L110.8 121.6Z" fill="black"/>
-    </svg>
-
-    <div class="nav-toggle" id="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <nav class="main-sidebar" id="main-sidebar">
-        <div class="sidebar-header">MENU</div>
-        <a href="../../index.html">Home</a>
-        <a href="Gallery.html" class="active">Exhibitions</a>
-        <a href="../Author/Author.html">Artists</a> 
-        <a href="../Contact/Contact.html">Inquiries</a>
-    </nav>
-
-    <div id="lightbox">
-        <img src="" alt="Zoomed View">
-    </div>
+            <ul class="nav-links" id="nav-links">
+           <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="Website/Gallery/Gallery.html">Exhibitions</a></li>
+    <li><a href="Website/Author/Author.html">Artists</a></li> 
+    <li><a href="Website/Contact/Contact.html">Inquiries</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <header>
-            <h2>ART ARCHIVE</h2>
-            <div class="categories">
-                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
-                <button class="filter-btn" onclick="filterGallery('cubism')">Cubism</button>
-                <button class="filter-btn" onclick="filterGallery('impressionism')">Impressionism</button>
-                <button class="filter-btn" onclick="filterGallery('realism')">Realism</button>
+        <section class="hero slide-up">
+            <div class="hero-content">
+                <span class="subtitle">EST. 2026</span>
+                <h1>Library of Alexander: A Collection of Timeless Artwork</h1>
+                <p>To provide artists and art enthusiasts the chance to see beautiful artworks in a click of a button.</p>
+                <a href="Website/Gallery/Gallery.html" class="cta-button">Enter Gallery</a>
             </div>
-        </header>
+        </section>
 
-        <section class="galleries" id="galleryGrid">
-            <article class="gallery" data-category="cubism">
-                <div class="gallery__images-thumbnail">
-                    <p>Pablo Picasso</p>
-                    <img src="Art-picasso/Avignon.jpg" class="zoomable" alt="Avignon">
+        <section class="featured slide-up-delayed">
+            <div class="section-header">
+                <h2>Current Exhibitions</h2>
+                <div class="line"></div>
+            </div>
+            <div class="artist-grid">
+                <div class="artist-card">
+                    <div class="card-img picasso"></div>
+                    <h3>Pablo Picasso</h3>
+                    <p>The Master of Cubism</p>
                 </div>
-                <div class="gallery__images-more">
-                    <img src="Art-picasso/Dove_lithograph_by_Picasso.jpg" class="zoomable" alt="Dove">
-                    <img src="Art-picasso/girlbfremrr.jpg" class="zoomable" alt="Girl before mirror">
-                    <img src="Art-picasso/Old_guitarist_chicago.jpg" class="zoomable" alt="Old Guitarist">
+                <div class="artist-card">
+                    <div class="card-img vangogh"></div>
+                    <h3>Vincent Van-Gogh</h3>
+                    <p>Post-Impressionist Dreams</p>
                 </div>
-                <div class="gallery__info">
-                    <span class="style-tag">Cubism</span>
-                </div>
-            </article>
-
-            <article class="gallery" data-category="impressionism">
-                <div class="gallery__images-thumbnail">
-                    <p>Vincent Van-Gogh</p>
-                    <img src="Art-goph/Bloosoms.jpg" class="zoomable" alt="Blossoms">
-                </div>
-                <div class="gallery__images-more">
-                    <img src="Art-goph/Cafetratnight.jpg" class="zoomable" alt="Cafe Terrace">
-                    <img src="Art-goph/Potatoetr.jpg" class="zoomable" alt="Potato Eaters">
-                    <img src="Art-goph/Starry%20night%20jpg.jpg" class="zoomable" alt="Starry Night">
-                </div>
-                <div class="gallery__info">
-                    <span class="style-tag">Impressionism</span>
-                </div>
-            </article>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>CODEDESTROYERS | ITS121p | 2026</p>
+        <p>CodeDestroyers | 2026 | ITS121p</p>
     </footer>
 
     <script>
-
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const overlay = document.getElementById('overlay');
