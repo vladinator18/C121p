@@ -206,41 +206,49 @@ footer {
     border-top: 1px solid var(--light-gray);
     color: var(--text-soft);
     font-size: 0.75rem;
-    letter-spacing: 1px;
+    etter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
+    /* The Navbar Container */
     .navbar { 
-        padding: 0 5%; 
-        height: 70px; /* Slightly smaller for mobile */
+        padding: 0 20px; 
+        height: 70px;
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    /* Stack links vertically and hide off-screen */
+    /* The Sidebar */
     .nav-links { 
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 70px;
-        left: -100%; /* Hidden off-screen */
-        width: 100%;
-        height: calc(100vh - 70px);
+        top: 0;
+        right: -100%; /* Start hidden off-screen to the right */
+        width: 280px;  /* Fixed width for a sidebar feel */
+        height: 100dvh; /* Full viewport height */
         background: var(--white);
-        gap: 30px;
-        padding: 50px;
-        transition: var(--transition);
-        z-index: 99;
+        padding: 80px 40px; /* Space at top for a close button if needed */
+        gap: 25px;
+        transition: right 0.3s ease-in-out; /* Smooth slide from right */
+        z-index: 999;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     }
 
-    /* Class to show the menu */
+    /* Slide the sidebar in */
     .nav-links.active {
-        left: 0;
+        right: 0;
     }
 
-    .hero h1 { 
-        font-size: 2.5rem; 
-    }
-
+    /* Stack grid items for mobile */
     .artist-grid {
-        grid-template-columns: 1fr; /* Single column for small screens */
+        grid-template-columns: 1fr;
+        padding: 10px;
     }
 }
