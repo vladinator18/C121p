@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C121p | Immersive Gallery</title>
-    <link rel="stylesheet" href="Css\Style.css">
+    <link rel="stylesheet" href="Css/Style.css">
 </head>
- 
 <body>
+
+    <div id="sidebar-overlay"></div>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <svg class="brand-logo-fixed" viewBox="0 0 198 203" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="99" cy="97" r="50" fill="#D9D9D9"/>
@@ -22,7 +29,7 @@
         <header>
             <h2>ART ARCHIVE</h2>
             <nav>
-                <div class="categories">
+                <div class="categories" id="categories-menu">
                     <button class="filter-btn active" onclick="filterGallery('all')">All</button>
                     <button class="filter-btn" onclick="filterGallery('cubism')">Cubism</button>
                     <button class="filter-btn" onclick="filterGallery('impressionism')">Impressionism</button>
@@ -46,37 +53,7 @@
                     <span class="style-tag">Cubism</span>
                 </div>
             </article>
-
-            <article class="gallery" data-category="impressionism">
-                <div class="gallery__images-thumbnail">
-                    <p>Vincent Van-Gogh</p>
-                    <img src="Art-goph/Bloosoms.jpg" class="zoomable">
-                </div>
-                <div class="gallery__images-more">
-                    <img src="Art-goph/Cafetratnight.jpg" class="zoomable">
-                    <img src="Art-goph/Potatoetr.jpg" class="zoomable">
-                    <img src="Art-goph/wheat and crows.jpg" class="zoomable">
-                </div>
-                <div class="gallery__info">
-                    <span class="style-tag">Impressionism</span>
-                </div>
-            </article>
-
-            <article class="gallery" data-category="realism">
-                <div class="gallery__images-thumbnail">
-                    <p>Fernando Amorsolo</p>
-                    <img src="Art- Amorsolo/Bombing.jpg" class="zoomable">
-                </div>
-                <div class="gallery__images-more">
-                    <img src="Art- Amorsolo/Buriningofmnl.jpg"zoomable">
-                    <img src="Art- Amorsolo/Dalagang bukid.jpg" class="zoomable">
-                    <img src="Art- Amorsolo/Makingoflag.jpg" class="zoomable">
-                </div>
-                <div class="gallery__info">
-                    <span class="style-tag">Realism</span>
-                </div>
-            </article>
-        </section>
+            </section>
     </main>
 
     <footer>
@@ -84,6 +61,23 @@
     </footer>
 
     <script>
+        // --- SIDEBAR TOGGLE LOGIC ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const categoriesMenu = document.getElementById('categories-menu');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            menuToggle.classList.toggle('active');
+            categoriesMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Lock background scroll when open
+            document.body.style.overflow = categoriesMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        menuToggle.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
         // --- FILTER LOGIC ---
         function filterGallery(category) {
             const buttons = document.querySelectorAll('.filter-btn');
@@ -108,6 +102,11 @@
                     }
                 }, 300);
             });
+
+            // Auto-close sidebar on mobile after picking a category
+            if (window.innerWidth <= 768 && categoriesMenu.classList.contains('active')) {
+                toggleSidebar();
+            }
         }
 
         // --- ZOOM LOGIC ---
@@ -118,13 +117,16 @@
             img.addEventListener('click', () => {
                 lightboxImg.src = img.src;
                 lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Stop scrolling
+                document.body.style.overflow = 'hidden';
             });
         });
 
         lightbox.addEventListener('click', () => {
             lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Resume scrolling
+            // Only resume scroll if sidebar isn't also open
+            if (!categoriesMenu.classList.contains('active')) {
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
